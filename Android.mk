@@ -3,7 +3,7 @@ ifneq ($(TARGET_SIMULATOR), true)
 LOCAL_PATH := $(call my-dir)
 MY_CFLAG:=  -O2 -g -W -Wall -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CONFIG_H -DANDROID
 ###################################################################
-## For stage1, we have to make  libfuse
+## For stage1, we have to make  libfuse-lite
 ###################################################################
 include $(CLEAR_VARS)
 
@@ -24,9 +24,16 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/include/fuse-lite
 
 LOCAL_CFLAGS := $(MY_CFLAG)
 
-LOCAL_MODULE := libfuse
+LOCAL_MODULE := libfuse-lite
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD SPDX-license-identifier-FSFAP SPDX-license-identifier-GPL SPDX-license-identifier-GPL-2.0 SPDX-license-identifier-LGPL SPDX-license-identifier-MIT legacy_notice legacy_unencumbered
+LOCAL_LICENSE_CONDITIONS := notice restricted unencumbered
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/COPYING $(LOCAL_PATH)/COPYING.LIB
 LOCAL_MODULE_TAGS := optional
-LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
+LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils liblog
+
+#ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26 && echo OK),OK)
+#LOCAL_PROPRIETARY_MODULE := true
+#endif
 
 include $(BUILD_STATIC_LIBRARY)
 
@@ -73,8 +80,15 @@ LOCAL_C_INCLUDES := \
 LOCAL_CFLAGS := $(MY_CFLAG)
 
 LOCAL_MODULE := libntfs-3g
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD SPDX-license-identifier-FSFAP SPDX-license-identifier-GPL SPDX-license-identifier-GPL-2.0 SPDX-license-identifier-LGPL SPDX-license-identifier-MIT legacy_notice legacy_unencumbered
+LOCAL_LICENSE_CONDITIONS := notice restricted unencumbered
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/COPYING $(LOCAL_PATH)/COPYING.LIB
 LOCAL_MODULE_TAGS := optional
-LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
+LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils liblog
+
+#ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26 && echo OK),OK)
+#LOCAL_PROPRIETARY_MODULE := true
+#endif
 
 include $(BUILD_STATIC_LIBRARY)
 
@@ -95,9 +109,17 @@ LOCAL_C_INCLUDES := \
 LOCAL_CFLAGS := $(MY_CFLAG)
 
 LOCAL_MODULE := ntfs-3g
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD SPDX-license-identifier-FSFAP SPDX-license-identifier-GPL SPDX-license-identifier-GPL-2.0 SPDX-license-identifier-LGPL SPDX-license-identifier-MIT legacy_notice legacy_unencumbered
+LOCAL_LICENSE_CONDITIONS := notice restricted unencumbered
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/COPYING $(LOCAL_PATH)/COPYING.LIB
+LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_MODULE_TAGS := optional
-LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
-LOCAL_STATIC_LIBRARIES := libfuse libntfs-3g
+LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils liblog
+LOCAL_STATIC_LIBRARIES := libfuse-lite libntfs-3g
+
+#ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26 && echo OK),OK)
+#LOCAL_PROPRIETARY_MODULE := true
+#endif
 
 include $(BUILD_EXECUTABLE)
 
@@ -143,9 +165,17 @@ LOCAL_C_INCLUDES := \
 LOCAL_CFLAGS := $(MY_CFLAG)
 
 LOCAL_MODULE := mkntfs
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD SPDX-license-identifier-FSFAP SPDX-license-identifier-GPL SPDX-license-identifier-GPL-2.0 SPDX-license-identifier-LGPL SPDX-license-identifier-MIT legacy_notice legacy_unencumbered
+LOCAL_LICENSE_CONDITIONS := notice restricted unencumbered
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/COPYING $(LOCAL_PATH)/COPYING.LIB
+LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_MODULE_TAGS := optional
-LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
-LOCAL_STATIC_LIBRARIES:= libntfs-3g libfuse
+LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils liblog
+LOCAL_STATIC_LIBRARIES:= libntfs-3g libfuse-lite
+
+#ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26 && echo OK),OK)
+#LOCAL_PROPRIETARY_MODULE := true
+#endif
 
 include $(BUILD_EXECUTABLE)
 
@@ -166,9 +196,17 @@ LOCAL_C_INCLUDES := \
 LOCAL_CFLAGS := $(MY_CFLAG)
 
 LOCAL_MODULE := ntfsfix
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD SPDX-license-identifier-FSFAP SPDX-license-identifier-GPL SPDX-license-identifier-GPL-2.0 SPDX-license-identifier-LGPL SPDX-license-identifier-MIT legacy_notice legacy_unencumbered
+LOCAL_LICENSE_CONDITIONS := notice restricted unencumbered
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/COPYING $(LOCAL_PATH)/COPYING.LIB
+LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_MODULE_TAGS := optional
-LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils
-LOCAL_STATIC_LIBRARIES:= libntfs-3g libfuse
+LOCAL_SYSTEM_SHARED_LIBRARIES := libc libcutils liblog
+LOCAL_STATIC_LIBRARIES:= libntfs-3g libfuse-lite
+
+#ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26 && echo OK),OK)
+#LOCAL_PROPRIETARY_MODULE := true
+#endif
 
 include $(BUILD_EXECUTABLE)
 
